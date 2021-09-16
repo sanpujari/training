@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel test suite" parallel="tests">
+  <test name="Firefox Test">
+    <classes>
+      <class name="uitest.ParallelTest"/>
+    </classes>
+  </test>
+  <test name="Chrome Test">
+    <classes>
+      <class name="uitest.ParallelTest"/>
+    </classes>
+  </test>
+</suite>

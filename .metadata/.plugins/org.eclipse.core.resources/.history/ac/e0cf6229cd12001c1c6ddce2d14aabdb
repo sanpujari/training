@@ -1,0 +1,10 @@
+package uitest;
+
+public class LocatorsExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

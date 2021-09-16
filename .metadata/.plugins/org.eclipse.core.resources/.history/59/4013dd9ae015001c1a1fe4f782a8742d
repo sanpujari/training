@@ -1,0 +1,81 @@
+package uitest;
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+ 
+public class CrossBrowserScript {
+ 
+WebDriver driver;
+ 
+/**
+* This function will execute before each Test tag in testng.xml
+* @param browser
+* @throws Exception
+*/
+@BeforeTest
+@Parameters("browser")
+public void setup(String browser) throws Exception{
+//Check if parameter passed from TestNG is 'firefox'
+if(browser.equalsIgnoreCase("firefox")){
+//create firefox instance
+	//System.setProperty("webdriver.chrome.driver","C:/Users/sanjayp/eclipse-workspace-PicnicSelenium/SeleniumProject/drivers/chromedriver.exe");
+driver = new FirefoxDriver();
+}
+ 
+//Check if parameter passed as 'chrome'
+else if(browser.equalsIgnoreCase("chrome")){
+//set path to chromedriver.exe
+System.setProperty("webdriver.chrome.driver","C:/Users/sanjayp/eclipse-workspace-PicnicSelenium/SeleniumProject/drivers/chromedriver.exe");
+driver = new ChromeDriver();
+ 
+}
+else if(browser.equalsIgnoreCase("Edge")){
+//set path to Edge.exe
+System.setProperty("webdriver.edge.driver","C:Selenium-java-edurekaMicrosoftWebDriver.exe");;span style="font-family: verdana, geneva, sans-serif; font-size: 14px;"&gt;//create Edge instance&lt;/span&gt;
+driver = new EdgeDriver();
+}
+else{
+//If no browser passed throw exception
+throw new Exception("Browser is not correct");
+}
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+}
+ 
+@Test
+public void testParameterWithXML() throws InterruptedException{
+driver.get("<a href="https://www.edureka.co/">https://www.edureka.co/</a>");
+WebElement Login = driver.findElement(By.linkText("Log In"));
+//Hit login button
+Login.click();
+Thread.sleep(4000);
+WebElement userName = driver.findElement(By.id("si_popup_email"));
+//Fill user name
+userName.sendKeys("your email id");
+Thread.sleep(4000);
+//Find password'WebElement password = driver.findElement(By.id("si_popup_passwd"));
+//Fill password
+password.sendKeys("your password");
+Thread.sleep(6000);
+ 
+WebElement Next = driver.findElement(By.xpath("//button[@class='clik_btn_log btn-block']"));
+//Hit search button
+Next.click();
+Thread.sleep(4000);
+WebElement search = driver.findElement(By.cssSelector("#search-inp"));
+//Fill search box
+search.sendKeys("Selenium");
+Thread.sleep(4000);
+//Hit search button
+ 
+WebElement searchbtn = driver.findElement(By.xpath("//span[@class='typeahead__button']"));
+searchbtn.click();
+}
+}

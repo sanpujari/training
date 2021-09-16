@@ -1,0 +1,16 @@
+package uitest;
+
+import atu.testrecorder.ATUTestRecorder;
+
+public class RecorderScript {
+    
+	
+	ATUTestRecorder recorder = new ATUTestRecorder("Directory","filename",false);
+//	recorder.start(); 
+	System.setProperty("webdriver.chrome.driver","C:/Users/sanjayp/eclipse-workspace-PicnicSelenium/SeleniumProject/drivers/chromedriver.exe");
+	WebDriver driver = new ChromeDriver();
+	driver.navigate().to("https://opensource-demo.orangehrmlive.com/");
+	driver.manage().window().maximize();  
+	driver.quit();
+//	recorder.stop();
+}

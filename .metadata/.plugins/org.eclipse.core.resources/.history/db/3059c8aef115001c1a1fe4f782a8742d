@@ -1,0 +1,16 @@
+package uitest;
+
+import atu.testrecorder.ATUTestRecorder;
+
+public class RecorderScript {
+	System.setProperty("webdriver.gecko.driver","C:/Users/sanjayp/eclipse-workspace-PicnicSelenium/SeleniumProject/drivers/geckodriver.exe");
+	
+	ATUTestRecorder recorder = new ATUTestRecorder("Directory","filename",false);
+	recorder.start(); 
+	
+	WebDriver browser = new FirefoxDriver();
+	browser.navigate().to("https://opensource-demo.orangehrmlive.com/");
+	browser.manage().window().maximize();  
+	browser.quit();
+	recorder.stop();
+}
